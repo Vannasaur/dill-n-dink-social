@@ -1,7 +1,7 @@
 const { Schema, Types } = require("mongoose");
 const { format_date } = require("../utils/helpers");
 
-// Schema for reaction (subdocument to Thought model)
+// Schema for reaction (subdocument to Event model)
 const commentSchema = new Schema(
 	{
 		commentId: {
