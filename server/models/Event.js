@@ -20,6 +20,22 @@ const eventSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		location: {
+			type: String,
+			required: true,
+		},
+		date: {
+			type: Date,
+			required: true,
+		},
+		time: {
+			type: String,
+			required: true,
+		},
+		numberOfCourts: {
+			type: Number,
+			required: false,
+		},
 		comments: [commentSchema],
 	},
 	{
@@ -36,7 +52,7 @@ eventSchema.virtual("commentCount").get(function () {
 	return this.comments.length;
 });
 
-// initialize our Thought model
+// initialize our Event model
 const Event = model("event", eventSchema);
 
 module.exports = Event;

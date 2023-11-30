@@ -15,6 +15,17 @@ const userSchema = new Schema(
             required: true,
             match: [ /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email'],
         },
+        password: {
+            type: String,
+            required: true,
+            minlength: 5,
+            validate: {
+                validator: function (value) {
+                    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
+                },
+                message: 'Password must have at least one uppercase, one lowercase, one special character, and be at least 8 characters long',
+            },
+        },
         events: [
             {
                 type: Schema.Types.ObjectId,
@@ -27,6 +38,12 @@ const userSchema = new Schema(
                 ref: 'user',
             }
         ],
+        groups: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'group',
+            }
+        ]
     },
     {
         toJSON: {
