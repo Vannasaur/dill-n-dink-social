@@ -8,8 +8,8 @@ const {
     deleteUser,
     addFriend,
     removeFriend,
-    joinGroup,
-    leaveGroup,
+    // joinGroup,
+    // leaveGroup,
     joinEvent,
     leaveEvent
 } = require('../../controllers/userControllers');
@@ -29,5 +29,10 @@ router.route('/:userId')
 router.route('/:userId/friends/:friendId')
     .post(addFriend)
     .delete(removeFriend);
+
+// routes for api/users/:userId/events/:eventId
+router.route('/:userId/events/:eventId')
+    .post(joinEvent)
+    .delete(leaveEvent);
 
 module.exports = router;
