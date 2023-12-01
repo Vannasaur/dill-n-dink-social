@@ -11,6 +11,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --orange: #f75511;
+  --light-orange: #fc793b;
+  --green: #015b4c;
+  --yellow: #feb500;
+  --dark-yellow: #df9801;
+  --light-green: #68b08b;
 }
 
 a {
@@ -66,3 +72,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
