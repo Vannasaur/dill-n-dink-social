@@ -46,7 +46,8 @@ module.exports = {
 
             console.log('User successfully created!');
         } catch (err) {
-            res.status(500).json(err);
+            console.log('Uh-oh, something went wrong');
+            res.status(500).json({ message: 'Something went wrong' });
         }
     },
     // update user
@@ -154,7 +155,7 @@ module.exports = {
                 //.populate('thoughts')
                 .populate('friends')
 
-                const friendsRemoved = { removeFriend, removeFriendBack }
+            const friendsRemoved = { removeFriend, removeFriendBack }
 
             if (!removeFriend) {
                 return res.status(404).json({ message: 'No user found with that ID' });
@@ -250,6 +251,27 @@ module.exports = {
             res.json(leaveEvent);
         } catch (err) {
             res.status(500).json(err)
+        }
+    },
+    async loginUser(req, res) {
+
+        try {
+            const user = await User.findOne({ email: req.body.email });
+            console.log(user)
+            if (!user) {
+                return res.status(400).json({ message: 'No user with that email address!' });
+            }
+
+            const correctPw = await user.isCorrectPassword(req.body.password);
+
+            if (!correctPw) {
+                return res.status(400).json({ message: 'Incorrect password!' });
+            }
+
+            const token = signToken(user);
+            res.json({ token, user });
+        } catch (err) {
+            res.status(500).json(err);
         }
     }
 };

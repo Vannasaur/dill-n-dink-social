@@ -4,6 +4,7 @@ const {
     getAllUsers,
     getSingleUser,
     createUser,
+    loginUser,
     updateUser,
     deleteUser,
     addFriend,
@@ -20,6 +21,9 @@ const { authMiddleware } = require('../../utils/auth');
 router.route('/')
     .get(getAllUsers)
     .post(createUser);
+
+// routes for /api/users/login
+router.route('/login').post(loginUser);
 
 // routes for api/users/:userId
 router.route('/:userId')
