@@ -14,6 +14,8 @@ const {
     leaveEvent
 } = require('../../controllers/userControllers');
 
+const { authMiddleware } = require('../../utils/auth');
+
 // routes for /api/users
 router.route('/')
     .get(getAllUsers)

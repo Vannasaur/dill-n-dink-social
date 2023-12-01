@@ -1,4 +1,5 @@
 const { User, Event } = require('../models');
+const { signToken } = require('../utils/auth');
 
 module.exports = {
     // get all users
@@ -30,12 +31,19 @@ module.exports = {
     },
     // create new user
     async createUser(req, res) {
+        console.log(req.body);
         try {
             const createUser = await User.create({
                 username: req.body.username,
-                email: req.body.email
+                email: req.body.email,
+                password: req.body.password,
             });
-            res.json(createUser);
+            if (!createUser) {
+                return res.status(400).json({ message: 'Issue creating user' })
+            }
+            const token = signToken(createUser);
+            res.json({ token, createUser });
+
             console.log('User successfully created!');
         } catch (err) {
             res.status(500).json(err);
