@@ -1,10 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const createUser = async () => {
+      try {
+        const response = await fetch('/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: 'Kyle Doe',
+            email: 'Kmail@email.com',
+            password: '!Password123',
+          }),
+        })
+        console.log(response)
+        response.ok
+          ? console.log('User created')
+          : console.log('User not created')
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    createUser()
+  }, [])
 
   return (
     <>

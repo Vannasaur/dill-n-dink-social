@@ -15,6 +15,7 @@ module.exports = {
     // get single user
     async getSingleUser(req, res) {
         try {
+            console.log('what!')
             const user = await User.findOne({ _id: req.params.userId })
                 //.populate('thoughts')
                 .populate('friends');
@@ -30,15 +31,20 @@ module.exports = {
     },
     // create new user
     async createUser(req, res) {
+        console.log('createUser backend');
+        console.log(req.body);
         try {
             const createUser = await User.create({
                 username: req.body.username,
-                email: req.body.email
+                email: req.body.email,
+                password: req.body.password,
             });
+            console.log(createUser);
             res.json(createUser);
             console.log('User successfully created!');
         } catch (err) {
-            res.status(500).json(err);
+            console.log('Uh-oh, something went wrong');
+            res.status(500).json({ message: 'Something went wrong' });
         }
     },
     // update user
@@ -146,7 +152,7 @@ module.exports = {
                 //.populate('thoughts')
                 .populate('friends')
 
-                const friendsRemoved = { removeFriend, removeFriendBack }
+            const friendsRemoved = { removeFriend, removeFriendBack }
 
             if (!removeFriend) {
                 return res.status(404).json({ message: 'No user found with that ID' });

@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt')
 
 // Schema to create User model
 const userSchema = new Schema(
@@ -13,7 +14,7 @@ const userSchema = new Schema(
             type: String,
             unique: true,
             required: true,
-            match: [ /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email'],
+            match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email'],
         },
         password: {
             type: String,
@@ -59,6 +60,17 @@ userSchema
     .get(function () {
         return this.friends.length;
     });
+userSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
+});
+userSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 
 // initialize User model
 const User = model('user', userSchema);
