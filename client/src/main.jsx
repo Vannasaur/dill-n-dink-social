@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.jsx'
 import Homepage from './pages/Homepage/Homepage.jsx'
-// import SearchBooks from "./pages/SearchBooks";
-// import SavedBooks from "./pages/SavedBooks";
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +15,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Homepage />,
+      },
+      {
+				path: "/dashboard",
+				element: <Dashboard />,
       },
     ],
   },
