@@ -252,5 +252,26 @@ module.exports = {
         } catch (err) {
             res.status(500).json(err)
         }
+    },
+    async loginUser(req, res) {
+
+        try {
+            const user = await User.findOne({ email: req.body.email });
+            console.log(user)
+            if (!user) {
+                return res.status(400).json({ message: 'No user with that email address!' });
+            }
+
+            const correctPw = await user.isCorrectPassword(req.body.password);
+
+            if (!correctPw) {
+                return res.status(400).json({ message: 'Incorrect password!' });
+            }
+
+            const token = signToken(user);
+            res.json({ token, user });
+        } catch (err) {
+            res.status(500).json(err);
+        }
     }
 };
