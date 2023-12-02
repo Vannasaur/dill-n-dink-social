@@ -1,0 +1,40 @@
+.dashboardMain {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  background-color: rgb(247, 244, 203);
+}
+
+.dashboardEvents {
+  background-color: rgb(38, 38, 38);
+  color: white;
+  margin: 2%;
+  padding: 2%;
+  width: 96%;
+}
+
+.dashboardGroups {
+  background-color: rgb(38, 38, 38);
+  color: white;
+  margin: 2%;
+  padding: 2%;
+  display: inline-block;
+  width: 46%;
+}
+
+.dashboardFriends {
+  background-color: rgb(38, 38, 38);
+  color: white;
+  margin: 2%;
+  padding: 2%;
+  display: inline-block;
+  width: 46%;
+}
+
+.dashboardBottomSection {
+  width: 100%;
+}
