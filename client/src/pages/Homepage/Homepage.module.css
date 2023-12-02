@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   width: 70%;
-  background-color: rgb(99, 99, 99);
+  background-color: darkslategray;
 }
 /* .hero {
   background-image: url('');
@@ -20,6 +20,10 @@
   background-repeat: no-repeat; */
 }
 
+/* .featureImage {
+  width: 70%;
+} */
+
 .homeAbout {
   background-color: rgb(38, 38, 38);
   color: white;
@@ -28,18 +32,30 @@
 }
 
 .homeFeatures {
-  
+  width: 100%;
+  text-align: center;
+  /* font-size: 1.4rem; */
 }
 
 .homeFeature {
-  display: flex;
-  background-color: rgb(46, 46, 46);
+  display: inline-block;
+  /* background-color: rgb(46, 46, 46); */
   color: white;
   margin: 2%;
   padding: 2%;
+  width: 23.3%;
 }
 
-h2 {
+.homeContact {
+  width: 96%;
+  background-color: rgb(38, 38, 38);
+  color: white;
+  margin: 2%;
+  padding: 2%;
+  text-align: center;
+}
+
+.homeWelcome {
   text-align: center;
 }
 

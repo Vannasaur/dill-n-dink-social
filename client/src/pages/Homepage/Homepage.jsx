@@ -1,8 +1,11 @@
-import style from './Homepage.module.css'
-import hero from '../../assets/images/hero.jpeg'
+import style from "./Homepage.module.css";
+import hero from "../../assets/images/hero.jpeg";
+import team from "../../assets/images/team.svg";
+import backhand from "../../assets/images/backhand.svg";
+import court from "../../assets/images/court.svg";
 
 const Homepage = () => {
-  return (
+	return (
 		<section className={style.homeMain}>
 			<div className={style.hero}>
 				<img src={hero} className={style.heroImage} />
@@ -12,7 +15,8 @@ const Homepage = () => {
 			</section>
 			<section className={style.homeAbout}>
 				<div>
-					<h2>Welcome to Dill 'n Dink Social!</h2>
+          <h1 className={style.homeWelcome}>Welcome to Dill 'n Dink Social!</h1>
+          <br />
 					<p>
 						At Dill 'n Dink, we're not just about pickleball; we're about
 						creating a vibrant community where pickleball enthusiasts of all
@@ -20,8 +24,9 @@ const Homepage = () => {
 						you're a seasoned pro or just getting started, our platform is your
 						go-to destination for pickleball fun!
 					</p>
+          <br />
 
-					<h3>Why Dill 'n Dink Social?</h3>
+          <h2>Why Dill 'n Dink Social?</h2>
 					<p>
 						We believe that the true essence of pickleball lies in the
 						camaraderie and connections formed on and off the court. That's why
@@ -31,7 +36,7 @@ const Homepage = () => {
 						people together.
 					</p>
 
-					<h3>What Sets Us Apart:</h3>
+					<h2>What Sets Us Apart:</h2>
 					<ul>
 						<li>
 							Inclusive Community: No matter your skill level, everyone is
@@ -59,7 +64,7 @@ const Homepage = () => {
 						</li>
 					</ul>
 
-					<h3>Join the Dill 'n Dink Family:</h3>
+					<h2>Join the Dill 'n Dink Family:</h2>
 					<p>
 						Ready to elevate your pickleball experience? Join Dill 'n Dink
 						Social today and become a part of a community that values the love
@@ -69,14 +74,47 @@ const Homepage = () => {
 				</div>
 			</section>
 			<section className={style.homeFeatures}>
-				<div className={style.homeFeature}>Create or sign up for an event</div>
-				<div className={style.homeFeature}>Join groups and connect</div>
-				<div className={style.homeFeature}>Find a nearby court</div>
+				<div className={style.homeFeature}>
+					<img src={team} className={style.featureImage} />
+					<h4>Create or sign up for an event</h4>
+				</div>
+				<div className={style.homeFeature}>
+					<img src={backhand} className={style.featureImage} />
+					<h4>Join groups and connect</h4>
+				</div>
+				<div className={style.homeFeature}>
+					<img src={court} className={style.featureImage} />
+					<h4>Find a court and schedule a game</h4>
+				</div>
 			</section>
 			<section className={style.homeContact}>
-				<div>contact us</div>
+				<div>
+					<h3 className={style.homeContactText}>Contact Us</h3>
+					<div>Email:</div>
+					<div>
+						<a
+							href="mailto:kyleochata@gmail.com"
+							target="_blank"
+							rel="noreferrer"
+						>
+							kyleochata@gmail.com
+						</a>
+						<br />
+						<a
+							href="mailto:vannaluciano@gmail.com"
+							target="_blank"
+							rel="noreferrer"
+						>
+							vannaluciano@gmail.com
+						</a>
+          </div>
+          <br />
+					<div>Phone:</div>
+          <div>1-714-917-9092</div>
+          <div>1-949-813-7689</div>
+				</div>
 			</section>
 		</section>
 	);
-}
-export default Homepage
+};
+export default Homepage;
